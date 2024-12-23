@@ -305,12 +305,63 @@
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> myNumbers[<span class="number">5</span>];</span><br><span class="line">cout &lt;&lt; myNumbers[<span class="number">3</span>];</span><br></pre></td></tr></table></figure>
 
-<p>​	<strong>答</strong>：访问了为初始化的内存</p>
+<p>​	<strong>答</strong>：访问了未初始化的内存</p>
+<h1 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h1><h2 id="5-3-使用运算符"><a href="#5-3-使用运算符" class="headerlink" title="5.3 使用运算符"></a>5.3 使用运算符</h2><p>​	<strong>5.3.2 理解左值和右值</strong></p>
+<ul>
+<li>左值：通常是内存单元</li>
+<li>右值：是内存单元的内容</li>
+<li>所有左值可以用作右值，但并非所有右值都可以用作左值</li>
+</ul>
+<p>​	<strong>5.3.3 加法运算符、除法运算符、减法运算符、乘法运算符和取模运算符</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//程序清单5.1 演示如何对用户输入的整数执行算术运算</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;Enter two integers: &quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="type">int</span> num1 = <span class="number">0</span>, num2 = <span class="number">0</span>;</span><br><span class="line">	cin &gt;&gt; num1;</span><br><span class="line">	cin &gt;&gt; num2;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; num1 &lt;&lt; <span class="string">&quot; + &quot;</span> &lt;&lt; num2 &lt;&lt; <span class="string">&quot; = &quot;</span> &lt;&lt; num1 + num2 &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; num1 &lt;&lt; <span class="string">&quot; - &quot;</span> &lt;&lt; num2 &lt;&lt; <span class="string">&quot; = &quot;</span> &lt;&lt; num1 - num2 &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; num1 &lt;&lt; <span class="string">&quot; * &quot;</span> &lt;&lt; num2 &lt;&lt; <span class="string">&quot; = &quot;</span> &lt;&lt; num1 * num2 &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; num1 &lt;&lt; <span class="string">&quot; / &quot;</span> &lt;&lt; num2 &lt;&lt; <span class="string">&quot; = &quot;</span> &lt;&lt; num1 / num2 &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; num1 &lt;&lt; <span class="string">&quot; % &quot;</span> &lt;&lt; num2 &lt;&lt; <span class="string">&quot; = &quot;</span> &lt;&lt; num1 % num2 &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>5.3.5 前缀还是后缀</strong></p>
+<ul>
+<li>前缀：先将右值递增或递减，再将结果赋给左值。</li>
+<li>后缀：先将右值赋给左值，再将右值递减或递增</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//程序清单5.2 前缀运算符和后缀运算符之间的差别</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> startValue = <span class="number">101</span>;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;Sart value of integer being operated: &quot;</span> &lt;&lt; startValue &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> postfixIncrement = startValue++;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;Result of Postfix Increment = &quot;</span> &lt;&lt; postfixIncrement &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;After Postfix Increment, startValue = &quot;</span> &lt;&lt; startValue &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	startValue = <span class="number">101</span>;</span><br><span class="line">	<span class="type">int</span> prefixIncrement = ++startValue;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;Result of prefix Increment = &quot;</span> &lt;&lt; prefixIncrement &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;After prefix Increment, startValue = &quot;</span> &lt;&lt; startValue &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	startValue = <span class="number">101</span>;</span><br><span class="line">	<span class="type">int</span> postfixDecrement = startValue--;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;Result of Postfix Decrement = &quot;</span> &lt;&lt; postfixDecrement &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;After Postfix Decrement, startValue = &quot;</span> &lt;&lt; startValue &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	startValue = <span class="number">101</span>;</span><br><span class="line">	<span class="type">int</span> prefixDecrement = --startValue;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;Result of Postfix Decrement = &quot;</span> &lt;&lt; prefixDecrement &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;After prefix Decrement, startValue = &quot;</span> &lt;&lt; startValue &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="作业-1"><a href="#作业-1" class="headerlink" title="作业"></a>作业</h2><p><strong>5.6.1 测验</strong></p>
+<ol>
+<li><p><strong>编写将两个数相除的应用程序时，将变量声明为哪种数据类型更合适，int还是float？</strong></p>
+<p><strong>答</strong>：float,防止精度丢失。</p>
+</li>
+<li><p><strong>32&#x2F;7的结果是多少？</strong></p>
+<p><strong>答</strong>：4</p>
+</li>
+<li><p><strong>32.0&#x2F;7的结果是多少？</strong></p>
+<p><strong>答</strong>：4.57143</p>
+</li>
+<li><p><strong>sizeof()是函数吗？</strong></p>
+<p><strong>答</strong>：是关键字</p>
+</li>
+<li><p><strong>我需要将一个数翻倍，再加上5，然后在翻倍，下面的代码是否正确？</strong></p>
+<p><code>int result = number &lt;&lt; 1 + 5 &lt;&lt; 1</code></p>
+<p><strong>答</strong>：不正确</p>
+</li>
+<li><p><strong>如果两个操作数的值都为true,对其执行XOR的结果是什么?</strong></p>
+<p><strong>答</strong>：false</p>
+</li>
+</ol>
+<p><strong>5.6.2 练习</strong></p>
+<ol>
+<li><p><strong>使用括号改善测试题5中的代码，使其清晰</strong></p>
+<p><strong>答</strong>：<code>int result = ((number &lt;&lt; 1) +  5) &lt;&lt; 1;</code></p>
+</li>
+<li><p><strong>下述代码导致result的值为多少？</strong></p>
+<p><strong>答</strong>：<code>result &lt;&lt; 7</code></p>
+</li>
+<li><p><strong>编写一个程序，让用户输入两个布尔值，并显示其执行各种按位运算的结果。</strong></p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;Enter your two bool value:&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="type">bool</span> bit1 = <span class="literal">false</span>;</span><br><span class="line">	<span class="type">bool</span> bit2 = <span class="literal">false</span>;</span><br><span class="line">	cin &gt;&gt; bit1;</span><br><span class="line">	cin &gt;&gt; bit2;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;or: &quot;</span> &lt;&lt; (bit1 | bit2) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;and: &quot;</span> &lt;&lt; (bit1 &amp; bit2) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;xor: &quot;</span> &lt;&lt; (bit1 ^ bit2) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/22/21%E5%A4%A9%E5%AD%A6%E9%80%9AC-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cm4zkantl00006sue2yil5u4w" data-title="21天学通C++学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/12/22/21%E5%A4%A9%E5%AD%A6%E9%80%9AC-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cm50lr4fk0000kguebcof9ju7" data-title="21天学通C++学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -522,7 +573,7 @@ QtCreator:集成的编译器，Qt的桌面环境。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/05/QT/" data-id="cm4zkantp00016sue8b6y5bs6" data-title="QT" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/12/05/QT/" data-id="cm50lr4fo0001kguecac43554" data-title="QT" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -573,7 +624,7 @@ QtCreator:集成的编译器，Qt的桌面环境。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/04/hello-world/" data-id="cm4zkants00036sue1vgi8e73" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/12/04/hello-world/" data-id="cm50lr4fs0003kgue4p1183bl" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
