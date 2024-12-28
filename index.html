@@ -1114,13 +1114,13 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> arr1Type,<span class="keyword">typename</span> arr2Type&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Arrays</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function">arr1Type&amp; <span class="title">GetElem1</span><span class="params">(<span class="type">int</span> index)</span> </span>&#123; <span class="keyword">return</span> arr1[index]; &#125;</span><br><span class="line">	<span class="function">arr1Type&amp; <span class="title">GetElem2</span><span class="params">(<span class="type">int</span> index)</span> </span>&#123; <span class="keyword">return</span> arr2[index]; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	arr1Type arr1[<span class="number">10</span>];</span><br><span class="line">	arr2Type arr2[<span class="number">10</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>编写模板函数Display()，它可使用不同数量和类型的参数调用，并将所有的参数都显示出来</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Display</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... args&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Display</span><span class="params">(T input,args... begin)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; input &lt;&lt; endl;</span><br><span class="line">	<span class="built_in">Display</span>(begin...);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Display</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... args&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Display</span><span class="params">(T input,args... begin)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; input &lt;&lt; endl;</span><br><span class="line">	<span class="built_in">Display</span>(begin...);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/22/21%E5%A4%A9%E5%AD%A6%E9%80%9AC-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cm58c218r00016oue92wf6ufk" data-title="21天学通C++学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/12/22/21%E5%A4%A9%E5%AD%A6%E9%80%9AC-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cm58c3nan00023wuebv1qdeg4" data-title="21天学通C++学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1332,7 +1332,7 @@ QtCreator:集成的编译器，Qt的桌面环境。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/05/QT/" data-id="cm58c218k00006oue2bhgciew" data-title="QT" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/12/05/QT/" data-id="cm58c3naa00003wuedb1m42b2" data-title="QT" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1383,7 +1383,7 @@ QtCreator:集成的编译器，Qt的桌面环境。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/04/hello-world/" data-id="cm58c218v00026oue9gh95l85" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/12/04/hello-world/" data-id="cm58c3nai00013wue6b564a4o" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
