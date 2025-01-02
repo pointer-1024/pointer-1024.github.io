@@ -2011,11 +2011,46 @@
 </ul>
 <p>std::exception 类是异常基类，它定义了虚方法what( )；这个方法很有用且非常重要，详细地描述 了导致异常的原因</p>
 <p><strong>28.4.2   从std::exception 派生出自定义异常类</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//程序清单28.5  继承std::exception 的 CustomException 类</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;exception&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CustomException</span> : <span class="keyword">public</span> exception</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">CustomException</span>(<span class="type">const</span> <span class="type">char</span>* why) :reason&#123; why &#125; &#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="type">const</span> <span class="type">char</span>* <span class="title">what</span><span class="params">()</span> <span class="type">const</span> </span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> reason.<span class="built_in">c_str</span>();</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	string reason;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">Divide</span><span class="params">(<span class="type">double</span> dividend, <span class="type">double</span> divisor)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (divisor == <span class="number">0</span>) <span class="keyword">throw</span> <span class="built_in">CustomException</span>(<span class="string">&quot;CustomException: Dividing by 0 is a crime&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> (dividend / divisor);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;Enter dividend: &quot;</span>;</span><br><span class="line">	<span class="type">double</span> dividend = <span class="number">0</span>;</span><br><span class="line">	cin &gt;&gt; dividend;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;Enter divisor: &quot;</span>;</span><br><span class="line">	<span class="type">double</span> divisor = <span class="number">0</span>;</span><br><span class="line">	cin &gt;&gt; divisor;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;Result is: &quot;</span> &lt;&lt; <span class="built_in">Divide</span>(dividend, divisor) &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">catch</span> (exception&amp; exp) &#123;</span><br><span class="line">		cout &lt;&lt; exp.<span class="built_in">what</span>() &lt;&lt; endl;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;Sorry, can&#x27;t continue!&quot;</span> &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="28-7-作业"><a href="#28-7-作业" class="headerlink" title="28.7   作业"></a>28.7   作业</h2><p>**28.7.2   练习 **</p>
+<ol>
+<li><p><strong>std::exception 是什么?</strong></p>
+<p><strong>答</strong>：是所有异常类的基类</p>
+</li>
+<li><p><strong>使用new分配内存失败时，将引发哪种异常?</strong></p>
+<p><strong>答</strong>：bad_alloc</p>
+</li>
+<li><p><strong>在异常处理程序（catch块）中，为大量int变量分配内存以便备份数据合适吗？</strong>  </p>
+<p><strong>答</strong>：不合适,避免资源消耗或复杂操作</p>
+</li>
+<li><p><strong>假设有一个异常类MyException，它继承了std::exception，您将如何捕获这种异常对象？</strong></p>
+<p><strong>答</strong>：使用catch(exception &amp;exp)进行捕获</p>
+</li>
+</ol>
+<p>**28.7.2   练习 **</p>
+<ol>
+<li><p><strong>查错：下述代码有何错误</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SomeIntelligentStuff</span> </span><br><span class="line">&#123; </span><br><span class="line">   <span class="type">bool</span> isStuffGoneBad; </span><br><span class="line"><span class="keyword">public</span>: </span><br><span class="line">   ~<span class="built_in">SomeIntelligentStuff</span>() </span><br><span class="line">   &#123; </span><br><span class="line">      <span class="keyword">if</span>(isStuffGoneBad) </span><br><span class="line">         <span class="keyword">throw</span> <span class="string">&quot;Big problem in this class, just FYI&quot;</span>; </span><br><span class="line">   &#125; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>答</strong>:不要在析构函数中引发异常</p>
+</li>
+<li><p><strong>查错：下述代码有何错误</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">   <span class="type">int</span>* millionNums = <span class="keyword">new</span> <span class="type">int</span> [<span class="number">1000000</span>]; </span><br><span class="line">   <span class="comment">// do something with the million integers </span></span><br><span class="line">   <span class="keyword">delete</span> []millionNums; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>答</strong>:没有处理可能引发异常的代码</p>
+</li>
+<li><p><strong>查错：下述代码有何错误</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">   <span class="keyword">try</span> </span><br><span class="line">   &#123; </span><br><span class="line">      <span class="type">int</span>* millionNums = <span class="keyword">new</span> <span class="type">int</span> [<span class="number">1000000</span>]; </span><br><span class="line">      <span class="comment">// do something with the million integers </span></span><br><span class="line">      <span class="keyword">delete</span> []millionNums; </span><br><span class="line">   &#125; </span><br><span class="line">   <span class="built_in">catch</span>(exception&amp; exp) </span><br><span class="line">   &#123; </span><br><span class="line">      <span class="type">int</span>* anotherMillion = <span class="keyword">new</span> <span class="type">int</span> [<span class="number">1000000</span>]; </span><br><span class="line">      <span class="comment">// take back up of millionNums and save it to disk </span></span><br><span class="line">   &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>答</strong>:不要在catch中分配内存，如果try块内的代码分配内存失败将导致恶性循环</p>
+</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/22/21%E5%A4%A9%E5%AD%A6%E9%80%9AC-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cm5fh8sly0002gwue0fw4gmup" data-title="21天学通C++学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/12/22/21%E5%A4%A9%E5%AD%A6%E9%80%9AC-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cm5fi5cqq0002xcuegpgl1rm8" data-title="21天学通C++学习笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -2227,7 +2262,7 @@ QtCreator:集成的编译器，Qt的桌面环境。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/05/QT/" data-id="cm5fh8sls0000gwueb6t46bze" data-title="QT" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/12/05/QT/" data-id="cm5fi5cqj0000xcueam9cdizc" data-title="QT" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -2278,7 +2313,7 @@ QtCreator:集成的编译器，Qt的桌面环境。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/04/hello-world/" data-id="cm5fh8slw0001gwueb0la72hx" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/12/04/hello-world/" data-id="cm5fi5cqo0001xcue5q3l5vmv" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
